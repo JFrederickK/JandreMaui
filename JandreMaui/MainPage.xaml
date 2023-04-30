@@ -1,41 +1,120 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="JandreMaui.MainPage">
+             x:Class="JandreMaui.MainPage"    
+             xmlns:viewmodel ="clr-namespace:JandreMaui.ViewModel"
+             x:DataType="viewmodel:MainViewModel"
+             xmlns:model="clr-namespace:JandreMaui.Models"
+             BackgroundColor="LightCoral">
+    <Grid RowDefinitions=".1*, .1*, .1*,.65*,.1*" 
+          Margin="10,0,0,0">
+        <Grid Margin="0,0,25,0"
+              ColumnDefinitions=".15*,.85*">
+            
+            <Label Grid.Column="1"
+                Text="Welcome"
+                   TextColor="White"
+                   Margin="0,0,0,0"
+                   FontSize="50">
+                
+            </Label>
+        </Grid>
+        <Grid Grid.Row="1"
+              ColumnDefinitions=".75*,.25*"
+              Margin="0,5,0,0">
+            <Entry Placeholder="Please enter a new Task" 
+               FontSize="18"
+               FontFamily="Arial"
+               Text="{Binding NewTask}"
+                   Margin="0,0,0,10">
+            </Entry>
+            <Button Text="Add" 
+                Grid.Column="1"
+                BackgroundColor="LightCyan"
+                TextColor="Black"
+                Command="{Binding AddCommand}"
+                Margin="0,0,10,20">
+            </Button>
+        </Grid>
+        <ScrollView Grid.Row="3"
+                    HorizontalScrollBarVisibility="Never"
+                    VerticalScrollBarVisibility="Never"
+                    Margin="0,32,10,0"
+                    >
+            <VerticalStackLayout Spacing="12">
+                <Border 
+                        Padding="12,4"
+                        BackgroundColor="#33CCCCCC"
+                        Stroke="{StaticResource BorderColor}"
+                        HorizontalOptions="Fill"
+                        Margin="0,0,24,0"
+                        HeightRequest="48">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="6"></RoundRectangle>
+                    </Border.StrokeShape>
+                    <Grid
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Center"
+                            ColumnDefinitions="Auto,*"
+                            ColumnSpacing="16" >
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+                        <Label
+                                Text="Search for the task that is important"
+                            TextColor="White"
+                                Grid.Column="1"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center"
+                                Style="{StaticResource MenuLabelStyle}"
+                            Margin="0,0,10,0"/>
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+                    </Grid>
 
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
+                </Border>
+                <CollectionView   
+                        HeightRequest="280"
+                        SelectionMode="Single"
+                        ItemsSource="{Binding Items}"
+                        SelectionChanged="Tasks_SelectionChanged">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal"
+                                           ItemSpacing="16">
+                        </LinearItemsLayout>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:ToDoClass">
+                            <Border
+                                    VerticalOptions="Fill"
+                                    WidthRequest="220"
+                                    StrokeThickness="0"
+                                    Padding="20">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="24"/>
+                                </Border.StrokeShape>
+                                <Grid  
+                                        RowDefinitions="*,Auto,Auto"
+                                        RowSpacing="4">
+                                    <Label
+                                            Grid.Row="0"
+                                            Text="{Binding Name}"
+                                            Margin="0,4,0,0"/>
+                                    <Label Grid.Row="2"
+                                           Text="{Binding EndTime}">
+                                    </Label>
+                                    <Label Grid.Row="3"
+                                           Text="{Binding StartTime}"></Label>
 
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+                                </Grid>
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
-
-        </VerticalStackLayout>
-    </ScrollView>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    
+                </CollectionView>
+                
+            </VerticalStackLayout>
+            
+        </ScrollView>
+    </Grid>
 
 </ContentPage>
+

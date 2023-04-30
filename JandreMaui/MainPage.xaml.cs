@@ -1,24 +1,37 @@
-﻿namespace JandreMaui;
+﻿
+using JandreMaui.LocalDatabases;
+using JandreMaui.Models;
+using JandreMaui.ViewModel;
+using System.Numerics;
+
+namespace JandreMaui;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
 
-	public MainPage()
+	public MainViewModel viewModel;
+    readonly ILocalDataBaseRepository database;
+
+    public MainPage(MainViewModel viewModel, ILocalDataBaseRepository toDoDatabase)
 	{
 		InitializeComponent();
+		this.BindingContext = this.viewModel = viewModel;
+		database = toDoDatabase;
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+		Task.Delay(500).ContinueWith(t => this.viewModel.ReadFromFile());
+    }
+    async void Tasks_SelectionChanged(Object sender,SelectionChangedEventArgs e)
+    {
+        await Navigation.PushAsync(new DetailsPage(e.CurrentSelection.FirstOrDefault() as ToDoClass));
+    }
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+    private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+    }
 }
 

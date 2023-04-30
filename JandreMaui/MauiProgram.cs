@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+﻿
+using JandreMaui.LocalDatabases;
+using JandreMaui.ViewModel;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace JandreMaui;
 
@@ -15,8 +19,18 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
+        builder.Services.AddSingleton<ILocalDataBaseRepository, DatabaseService>();
+
+		builder.Services.AddTransient<MainViewModel>();
+		builder.Services.AddTransient<MainPage>();
+
+        builder.Services.AddTransient<DetailViewModel>();
+        builder.Services.AddTransient<DetailsPage>();
+
+
+
 #if DEBUG
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
 		return builder.Build();

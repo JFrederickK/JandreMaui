@@ -4,11 +4,28 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:JandreMaui"
-    Shell.FlyoutBehavior="Disabled">
+    FlyoutIcon="icons8-menu.svg">
+    
+    <Shell.FlyoutHeader>
+        <Grid HeightRequest="50" BackgroundColor="Bisque">
+            <Label Text="Menu" FontSize="Large" Margin="125,5,0,0"></Label>
+        </Grid> 
+    </Shell.FlyoutHeader>
 
-    <ShellContent
+    <FlyoutItem Title="Hom">
+        <ShellContent
         Title="Home"
+        Icon="icons8-menu.svg"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Weather">
+        <ShellContent Title="What is my weather"></ShellContent>
+    </FlyoutItem>
+    
+    <FlyoutItem Title="Account">
+        <ShellContent></ShellContent>
+    </FlyoutItem>
 
 </Shell>
