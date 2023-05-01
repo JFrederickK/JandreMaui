@@ -21,11 +21,19 @@
     </FlyoutItem>
 
     <FlyoutItem Title="Weather">
-        <ShellContent Title="What is my weather"></ShellContent>
+        <ShellContent 
+        Title="What is my weather"
+        Icon="icons8-menu.svg"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" ></ShellContent>
     </FlyoutItem>
     
     <FlyoutItem Title="Account">
-        <ShellContent></ShellContent>
+        <ShellContent         
+        Title="Accounts"
+        Icon="icons8-menu.svg"
+        ContentTemplate="{DataTemplate local:AccountPage}"
+        Route="MainPage"></ShellContent>
     </FlyoutItem>
 
 </Shell>

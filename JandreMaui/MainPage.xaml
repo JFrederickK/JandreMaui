@@ -9,12 +9,11 @@
     <Grid RowDefinitions=".1*, .1*, .1*,.65*,.1*" 
           Margin="10,0,0,0">
         <Grid Margin="0,0,25,0"
-              ColumnDefinitions=".15*,.85*">
-            
+>
             <Label Grid.Column="1"
-                Text="Welcome"
+                Text="Current task"
                    TextColor="White"
-                   Margin="0,0,0,0"
+                   Margin="30,0,0,0"
                    FontSize="50">
                 
             </Label>
