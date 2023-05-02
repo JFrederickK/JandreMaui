@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JandreMaui.LocalDatabases
 {
-    internal interface IAccount
+    public interface IAccount
     {
         public Task<List<UserAccounts>> GetAllAccounts();
 

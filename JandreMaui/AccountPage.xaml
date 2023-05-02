@@ -2,9 +2,58 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="JandreMaui.AccountPage"
-             Title="User Account">
-    <Grid RowDefinitions=".2*,.6*,.2*">
-        <Label Text="Which user do you want to select"></Label>
-    </Grid>
+             Title="User Account"
+             xmlns:viewmodel ="clr-namespace:JandreMaui.ViewModel"
+             xmlns:model ="clr-namespace:JandreMaui.Models"
+             x:DataType="viewmodel:AccountViewModel">
+    <ScrollView
+                    HorizontalScrollBarVisibility="Never"
+                    VerticalScrollBarVisibility="Never"
+                    Margin="0,32,10,0"
+                    >
+        <VerticalStackLayout Spacing="12">
+            <CollectionView   
+                        HeightRequest="280"
+                        SelectionMode="Single"
+                        ItemsSource="{Binding Useraccounts}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal"
+                                           ItemSpacing="16">
+                    </LinearItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:UserAccounts">
+                        <Border
+                                    VerticalOptions="Fill"
+                                    WidthRequest="220"
+                                    StrokeThickness="0"
+                                    Padding="20">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="24"/>
+                            </Border.StrokeShape>
+                            <Grid  
+                                        RowDefinitions="*,Auto,Auto"
+                                        RowSpacing="4">
+                                <Label
+                                            Grid.Row="0"
+                                            Text="{Binding Name}"
+                                            Margin="0,4,0,0"/>
+                                <Label Grid.Row="2"
+                                           Text="{Binding Surname}">
+                                </Label>
+                                <Label Grid.Row="3"
+                                           Text="{Binding Email}"></Label>
+
+                            </Grid>
+
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
 
 </ContentPage>
