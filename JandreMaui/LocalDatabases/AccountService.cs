@@ -1,9 +1,12 @@
 ﻿using JandreMaui.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+
 
 namespace JandreMaui.LocalDatabases
 {
@@ -19,9 +22,14 @@ namespace JandreMaui.LocalDatabases
             throw new NotImplementedException();
         }
 
-        public Task<List<UserAccounts>> GetAllAccounts()
+        public async Task<List<UserAccounts>> GetAllAccounts()
         {
-            throw new NotImplementedException();
+
+            using var clients = new HttpClient();
+            var results = await clients.GetAsync($"http://localhost:5265/api/AccountUser");
+            var resp = await results.Content.ReadAsStringAsync(); 
+            List<UserAccounts> accounts = JsonConvert.DeserializeObject<List<UserAccounts>>(resp);
+            return accounts;
         }
 
         public Task SaveAccount(UserAccounts accounts)
