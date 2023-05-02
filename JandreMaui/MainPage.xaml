@@ -5,7 +5,7 @@
              xmlns:viewmodel ="clr-namespace:JandreMaui.ViewModel"
              x:DataType="viewmodel:MainViewModel"
              xmlns:model="clr-namespace:JandreMaui.Models"
-             BackgroundColor="LightCoral">
+             BackgroundColor="#013328">
     <Grid RowDefinitions=".1*, .1*, .1*,.65*,.1*" 
           Margin="10,0,0,0">
         <Grid Margin="0,0,25,0"
@@ -43,7 +43,7 @@
             <VerticalStackLayout Spacing="12">
                 <Border 
                         Padding="12,4"
-                        BackgroundColor="#33CCCCCC"
+                        BackgroundColor="#E3DCD2"
                         Stroke="{StaticResource BorderColor}"
                         HorizontalOptions="Fill"
                         Margin="0,0,24,0"
@@ -59,12 +59,13 @@
 
                         <Label
                                 Text="Search for the task that is important"
-                            TextColor="White"
+                            TextColor="#CC8B65"
                                 Grid.Column="1"
                                 VerticalOptions="Center"
                                 VerticalTextAlignment="Center"
                                 Style="{StaticResource MenuLabelStyle}"
-                            Margin="0,0,10,0"/>
+                            Margin="0,0,10,0">
+                        </Label>
 
                     </Grid>
 
@@ -73,7 +74,7 @@
                         HeightRequest="280"
                         SelectionMode="Single"
                         ItemsSource="{Binding Items}"
-                        SelectionChanged="Tasks_SelectionChanged">
+                        SelectedItem="{Binding SelectedToDo}">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal"
                                            ItemSpacing="16">
@@ -85,7 +86,8 @@
                                     VerticalOptions="Fill"
                                     WidthRequest="220"
                                     StrokeThickness="0"
-                                    Padding="20">
+                                    Padding="20"
+                                BackgroundColor="#CC8B65">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="24"/>
                                 </Border.StrokeShape>

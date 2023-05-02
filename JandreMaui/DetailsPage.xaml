@@ -5,11 +5,133 @@
              Title="Details Page"
              xmlns:viewmodel ="clr-namespace:JandreMaui.ViewModel"
              x:DataType="viewmodel:DetailViewModel"
-             xmlns:model="clr-namespace:JandreMaui.Models">
+             xmlns:model="clr-namespace:JandreMaui.Models"
+             BackgroundColor="#013328">
 
 
+    <Grid RowDefinitions=".1*,.5*,.3*,.1*" 
+          Margin="0,5,0,5"
+          RowSpacing="40">
+        <Border 
+                        Padding="12,4"
+                        BackgroundColor="#E3DCD2"
+                        Stroke="{StaticResource BorderColor}"
+                        HorizontalOptions="Fill"
+                        Margin="24,0,24,0"
+                        HeightRequest="50">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="6"></RoundRectangle>
+            </Border.StrokeShape>
+            <Grid
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Center"
+                            ColumnDefinitions="Auto,*"
+                            ColumnSpacing="16" >
 
-    <StackLayout Margin="5">
+                <Label
+                                Text="{Binding Items.Name}"
+                            TextColor="#CC8B65"
+                                Grid.Column="1"
+                                Style="{StaticResource MenuLabelStyle}">
+                </Label>
+
+            </Grid>
+
+        </Border>
+        <Grid Grid.Row="1">
+            <Border 
+                        Padding="12,4"
+                        BackgroundColor="#E3DCD2"
+                        Stroke="{StaticResource BorderColor}"
+                        HorizontalOptions="Fill"
+                        Margin="24,0,24,0"
+                        HeightRequest="400">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="6"></RoundRectangle>
+                </Border.StrokeShape>
+                
+
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2"
+              RowDefinitions=".33*,.33*,.33*"
+              RowSpacing="0">
+            <Border     Padding="12,4"
+                        BackgroundColor="#E3DCD2"
+                        HorizontalOptions="Fill"
+                        Margin="15,0,15,0"
+                        HeightRequest="60">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="6"></RoundRectangle>
+                </Border.StrokeShape>
+                <Label
+                                Text="{Binding Items.StartTime ,StringFormat='{0:MMMM dd, yyyy}'}"
+                            TextColor="#CC8B65"
+                                Grid.Column="1"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center">
+                </Label>
+
+            </Border>
+            <Border     Grid.Row="1"
+                        Padding="12,4"
+                        BackgroundColor="#E3DCD2"
+                        HorizontalOptions="Fill"
+                        Margin="15,0,15,0"
+                        HeightRequest="60">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="6"></RoundRectangle>
+                </Border.StrokeShape>
+                <Label
+                                Text="{Binding Items.StartTime.Value.Date}"
+                                TextColor="#CC8B65"
+                                Grid.Column="1"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center">
+                </Label>
+
+            </Border>
+            <Border     Grid.Row="2"
+                        Padding="12,4"
+                        BackgroundColor="#E3DCD2"
+                        HorizontalOptions="Fill"
+                        Margin="15,0,15,0"
+                        HeightRequest="60">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="6"></RoundRectangle>
+                </Border.StrokeShape>
+                <Label
+                                Text="{Binding Items.StartTime}"
+                            TextColor="#CC8B65"
+                                Grid.Column="1"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center">
+                </Label>
+
+            </Border>
+
+        </Grid>
+        <Grid Grid.Row="3" ColumnDefinitions=".75*,.25*"
+              Margin="5"
+              ColumnSpacing="2">
+            <Button Text="Go back"
+                Command="{Binding GoBackCommand}"
+                Grid.Row="2"
+                BackgroundColor="Green"
+                Margin="1"
+                Grid.Column="0">
+            </Button>
+            <Button Text="Delete"
+                Command="{Binding DeleteCommand}"
+                Grid.Row="2"
+                BackgroundColor="Red"
+                Grid.Column="1"
+                Margin="1"></Button>
+
+        </Grid>
+        
+    </Grid>
+    <!--<StackLayout Margin="5">
 
         <Grid RowDefinitions="Auto,Auto,Auto"
               ColumnDefinitions=".75*, auto">
@@ -41,21 +163,9 @@
                 </Button>
 
             </Grid>
-            <Button Text="Go back"
-                Command="{Binding GoBackCommand}"
-                Grid.Row="2"
-                BackgroundColor="Green"
-                Margin="1"
-                Grid.Column="0">
-            </Button>
-            <Button Text="Delete"
-                Command="{Binding DeleteCommand}"
-                Grid.Row="2"
-                BackgroundColor="Red"
-                Grid.Column="1"
-                Margin="1"></Button>
+
         </Grid>
 
-    </StackLayout>
+    </StackLayout>-->
 
 </ContentPage>
