@@ -25,6 +25,25 @@ namespace JandreMaui.ViewModel
 
         }
 
+        ToDoClass selectedToDo;
+        public ToDoClass SelectedToDo
+        {
+            get
+            {
+                return selectedToDo;
+            }
+            set
+            {
+                if (selectedToDo != value)
+                {
+                    selectedToDo = value;
+                    this.OnPropertyChanged(nameof(SelectedToDo));
+
+                    this.Tap(selectedToDo).ConfigureAwait(false);
+                }
+            }
+        }
+
         [ObservableProperty]
         private ObservableCollection<ToDoClass> items;
 
@@ -58,7 +77,6 @@ namespace JandreMaui.ViewModel
 
         }
 
-        [RelayCommand]
         private async Task Tap(ToDoClass reference)
         {
             try
@@ -96,6 +114,7 @@ namespace JandreMaui.ViewModel
         {
             try
             {
+                await Task.Delay(500);
                 List<ToDoClass> results = await this._localDataBaseRepository.GetItemsAsync();
                 if (results != null)
                 {

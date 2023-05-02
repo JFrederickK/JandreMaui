@@ -62,6 +62,8 @@ namespace JandreMaui.LocalDatabases
                     Description = capture.Description,
                     Name = capture.Name,
                     Id = capture.Id,
+                    EndTime = capture.EndTime,
+                    StartTime = capture.StartTime,
 
                 };
                 return convertedCapture;
