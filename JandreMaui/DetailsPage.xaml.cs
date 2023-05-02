@@ -7,10 +7,11 @@ public partial class DetailsPage : ContentPage
 {
 	public DetailViewModel detailViewModel;
 
-    public DetailsPage( ToDoClass toDo)
+    public DetailsPage(DetailViewModel detailView)
 	{
 		InitializeComponent();
-		this.BindingContext = toDo;
+		this.BindingContext = detailViewModel = detailView;
+
 	}
     protected override void OnAppearing()
     {
