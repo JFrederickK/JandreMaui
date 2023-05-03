@@ -5,55 +5,108 @@
              Title="User Account"
              xmlns:viewmodel ="clr-namespace:JandreMaui.ViewModel"
              xmlns:model ="clr-namespace:JandreMaui.Models"
-             x:DataType="viewmodel:AccountViewModel">
-    <ScrollView
+             x:DataType="viewmodel:AccountViewModel"
+             BackgroundColor="#013328">
+    <Grid RowDefinitions=".2*,.6*,.1*"
+          Margin="5,0,5,0">
+        <Border 
+                        Padding="12,4"
+                        BackgroundColor="#E3DCD2"
+                        Stroke="{StaticResource BorderColor}"
+                        HorizontalOptions="Fill"
+                        HeightRequest="48">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="6"></RoundRectangle>
+            </Border.StrokeShape>
+            <Grid
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Center"
+                            ColumnDefinitions="Auto,*"
+                            ColumnSpacing="16" >
+
+                <Label
+                                Text="Search for the task that is important"
+                            TextColor="#CC8B65"
+                                Grid.Column="1"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center"
+                                Style="{StaticResource MenuLabelStyle}"
+                            Margin="0,0,10,0">
+                </Label>
+
+            </Grid>
+
+        </Border>
+        <ScrollView
+            Grid.Row="1"
                     HorizontalScrollBarVisibility="Never"
                     VerticalScrollBarVisibility="Never"
                     Margin="0,32,10,0"
                     >
-        <VerticalStackLayout Spacing="12">
-            <CollectionView   
+            <VerticalStackLayout Spacing="12">
+                <CollectionView   
                         HeightRequest="280"
                         SelectionMode="Single"
-                        ItemsSource="{Binding Useraccounts}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Horizontal"
+                        ItemsSource="{Binding Useraccounts}"
+                    SelectedItem="{Binding SelectedToDo}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal"
                                            ItemSpacing="16">
-                    </LinearItemsLayout>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:UserAccounts">
-                        <Border
+                        </LinearItemsLayout>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:UserAccounts">
+                            <Border
                                     VerticalOptions="Fill"
                                     WidthRequest="220"
                                     StrokeThickness="0"
-                                    Padding="20">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="24"/>
-                            </Border.StrokeShape>
-                            <Grid  
-                                        RowDefinitions="*,Auto,Auto"
+                                    Padding="20"
+                                    BackgroundColor="#CC8B65">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="24"/>
+                                </Border.StrokeShape>
+                                <Grid  
+                                        RowDefinitions=".25*,.25*,.25*,.25*"
                                         RowSpacing="4">
-                                <Label
-                                            Grid.Row="0"
+                                    <Label
                                             Text="{Binding Name}"
                                             Margin="0,4,0,0"/>
-                                <Label Grid.Row="2"
+                                    <Label Grid.Row="1"
                                            Text="{Binding Surname}">
-                                </Label>
-                                <Label Grid.Row="3"
+                                    </Label>
+                                    <Label Grid.Row="2"
                                            Text="{Binding Email}"></Label>
+                                    <Button Text="Select"
+                                        Grid.Row="3"
+                                        BackgroundColor="Green"
+                                        Margin="1"
+                                        Grid.Column="0">
+                                    </Button>
 
-                            </Grid>
+                                </Grid>
 
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
 
-            </CollectionView>
+                </CollectionView>
 
-        </VerticalStackLayout>
+            </VerticalStackLayout>
 
-    </ScrollView>
+        </ScrollView>
+        <Grid Grid.Row="3" 
+              Margin="5"
+              ColumnSpacing="2">
+            <Button Text="Add user"
+                Grid.Row="2"
+                BackgroundColor="Green"
+                Margin="1"
+                Grid.Column="0"
+                    Command="{Binding TapAddCommand}">
+            </Button>
+
+        </Grid>
+    </Grid>
+
 
 </ContentPage>

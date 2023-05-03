@@ -21,6 +21,8 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<ILocalDataBaseRepository, DatabaseService>();
 		builder.Services.AddSingleton<IAccount , AccountService>();
+		builder.Services.AddTransient<AddAccount>();
+		builder.Services.AddTransient<UserDetailPage>();
 
 		builder.Services.AddTransient<AccountPage>();
 		builder.Services.AddTransient<AccountViewModel>();

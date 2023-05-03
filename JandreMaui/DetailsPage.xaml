@@ -49,7 +49,7 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="6"></RoundRectangle>
                 </Border.StrokeShape>
-                
+
 
             </Border>
         </Grid>
@@ -129,43 +129,7 @@
                 Margin="1"></Button>
 
         </Grid>
-        
+
     </Grid>
-    <!--<StackLayout Margin="5">
-
-        <Grid RowDefinitions="Auto,Auto,Auto"
-              ColumnDefinitions=".75*, auto">
-            <Frame Margin="5"
-                   Grid.ColumnSpan="2">
-                <Label Text="{Binding Items.Name}"></Label>
-            </Frame>
-            <Grid
-              ColumnDefinitions=".75*,.25*"
-                  Grid.Row="1">
-
-                    <Entry x:Name="entry"
-                           Placeholder="{Binding Items.Description}" 
-                           Grid.Row="1"
-                           FontSize="18"
-                           FontFamily="Arial"
-                           Text="{Binding TaskDescription}">
-
-                    </Entry>
-
-                <Button Grid.Column="1"
-                        Grid.ColumnSpan="1"
-                    Grid.Row="1"
-                    Margin="5"
-                    Text="Edit"
-                    BackgroundColor="Blue"
-                    Command="{Binding EditCommand}">
-
-                </Button>
-
-            </Grid>
-
-        </Grid>
-
-    </StackLayout>-->
 
 </ContentPage>

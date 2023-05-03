@@ -11,7 +11,7 @@ namespace JandreMaui.LocalDatabases
     {
         public Task<List<UserAccounts>> GetAllAccounts();
 
-        public Task GetAccount(UserAccounts accounts);
+        public Task<UserAccounts> GetAccount(UserAccounts accounts);
 
         public Task DeleteAccount(UserAccounts accounts);
 
