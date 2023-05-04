@@ -50,23 +50,29 @@ namespace JandreMaui.ViewModel
         [ObservableProperty]
         private string newTask;
 
+        [ObservableProperty]
+        private string taskDescription;
+
         [RelayCommand]
         private async Task Add()
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(this.NewTask))
+                if (String.IsNullOrWhiteSpace(this.NewTask) && String.IsNullOrWhiteSpace(this.TaskDescription))
                 {
+                    await Shell.Current.DisplayAlert("All fields requerd", "Plase fill in all the fields to make new task", "Ok");
                     return;
                 }
                 ToDoClass toDoClass = new ToDoClass()
                 {
                     Name = this.NewTask,
+                    Description = this.TaskDescription,
 
                 };
                  this.WriteToFile(toDoClass);
 
                 this.NewTask = string.Empty;
+                this.TaskDescription = string.Empty;
 
                 await this.ReadFromFile();
             }

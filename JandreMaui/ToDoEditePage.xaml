@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JandreMaui.ToDoEditePage"
+             Title="Edite To Do"
+             xmlns:viewmodel ="clr-namespace:JandreMaui.ViewModel"
+             x:DataType="viewmodel:EditeToDoViewModel"
+             xmlns:model="clr-namespace:JandreMaui.Models"
+             BackgroundColor="#072A40">
+    <Grid RowDefinitions=".1*,.1*,.2*,.1*"
+          RowSpacing="10">
+        <Border Grid.Row="0"
+                        Padding="12,4"
+                        BackgroundColor="#178CA4"
+                        Stroke="{StaticResource BorderColor}"
+                        HorizontalOptions="Fill"
+                        Margin="10,10,10,0">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="6"></RoundRectangle>
+            </Border.StrokeShape>
+            <Entry
+                Placeholder="New name"
+                PlaceholderColor="#F9F7F0"
+               FontSize="18"
+               FontFamily="Arial"
+                Text="{Binding NewTaskName}"
+                   Margin="10,0,0,10">
+            </Entry>
+            
+        </Border>
+        
+        <Border Grid.Row="1"
+                        Padding="12,4"
+                        BackgroundColor="#178CA4"
+                        Stroke="{StaticResource BorderColor}"
+                        HorizontalOptions="Fill"
+                        Margin="10,0,10,0">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="6"></RoundRectangle>
+            </Border.StrokeShape>
+            <Entry
+                Placeholder="New Description"
+                PlaceholderColor="#F9F7F0"
+               FontSize="18"
+               FontFamily="Arial"
+                Text="{Binding TaskDescription}"
+                   Margin="10,0,0,10">
+            </Entry>
+
+        </Border>
+        <Grid Grid.Row="3" ColumnDefinitions=".75*,.25*"
+              Margin="10,60,10,10"
+              ColumnSpacing="2">
+            <Button Text="Edite"
+                Command="{Binding EditCommand}"
+                Grid.Row="2"
+                BackgroundColor="LightCyan"
+                Margin="1"
+                Grid.Column="0"
+                    TextColor="Black">
+            </Button>
+            <Button Text="Delete"
+                Command="{Binding GoBackCommand}"
+                Grid.Row="2"
+                BackgroundColor="Red"
+                Grid.Column="1"
+                Margin="1"></Button>
+
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -6,37 +6,23 @@
              xmlns:viewmodel ="clr-namespace:JandreMaui.ViewModel"
              xmlns:model ="clr-namespace:JandreMaui.Models"
              x:DataType="viewmodel:AccountViewModel"
-             BackgroundColor="#013328">
+             BackgroundColor="#072A40">
     <Grid RowDefinitions=".2*,.6*,.1*"
-          Margin="5,0,5,0">
-        <Border 
-                        Padding="12,4"
-                        BackgroundColor="#E3DCD2"
-                        Stroke="{StaticResource BorderColor}"
-                        HorizontalOptions="Fill"
-                        HeightRequest="48">
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="6"></RoundRectangle>
-            </Border.StrokeShape>
-            <Grid
-                            HorizontalOptions="Fill"
-                            VerticalOptions="Center"
-                            ColumnDefinitions="Auto,*"
-                            ColumnSpacing="16" >
-
-                <Label
-                                Text="Search for the task that is important"
-                            TextColor="#CC8B65"
+          Margin="5,0,0,0">
+        <Grid>
+            <Label
+                                Text=" User Accounts "
+                            TextColor="#F9F7F0"
+                            FontSize="40"
+                TextDecorations="Underline"
+                            
                                 Grid.Column="1"
                                 VerticalOptions="Center"
                                 VerticalTextAlignment="Center"
                                 Style="{StaticResource MenuLabelStyle}"
-                            Margin="0,0,10,0">
-                </Label>
-
-            </Grid>
-
-        </Border>
+                            Margin="55,0,0,0">
+            </Label>
+        </Grid>
         <ScrollView
             Grid.Row="1"
                     HorizontalScrollBarVisibility="Never"
@@ -58,30 +44,31 @@
                         <DataTemplate x:DataType="model:UserAccounts">
                             <Border
                                     VerticalOptions="Fill"
-                                    WidthRequest="220"
+                                    WidthRequest="250"
                                     StrokeThickness="0"
                                     Padding="20"
-                                    BackgroundColor="#CC8B65">
+                                    BackgroundColor="#178CA4">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="24"/>
                                 </Border.StrokeShape>
                                 <Grid  
-                                        RowDefinitions=".25*,.25*,.25*,.25*"
+                                        RowDefinitions=".25*,.25*,.25*"
                                         RowSpacing="4">
                                     <Label
                                             Text="{Binding Name}"
-                                            Margin="0,4,0,0"/>
+                                        TextColor="#F9F7F0"
+                                            Margin="0,4,0,0"
+                                        FontSize="15"
+                                        />
                                     <Label Grid.Row="1"
-                                           Text="{Binding Surname}">
+                                           Text="{Binding Surname}"
+                                           TextColor="#F9F7F0"
+                                           FontSize="15">
                                     </Label>
                                     <Label Grid.Row="2"
-                                           Text="{Binding Email}"></Label>
-                                    <Button Text="Select"
-                                        Grid.Row="3"
-                                        BackgroundColor="Green"
-                                        Margin="1"
-                                        Grid.Column="0">
-                                    </Button>
+                                           Text="{Binding Email}"
+                                           TextColor="#F9F7F0"
+                                           FontSize="15"></Label>
 
                                 </Grid>
 
@@ -99,7 +86,9 @@
               ColumnSpacing="2">
             <Button Text="Add user"
                 Grid.Row="2"
-                BackgroundColor="Green"
+                BackgroundColor="LightCyan"
+                    TextColor="Black"
+                    FontSize="20"
                 Margin="1"
                 Grid.Column="0"
                     Command="{Binding TapAddCommand}">

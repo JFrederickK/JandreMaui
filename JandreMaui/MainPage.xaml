@@ -5,71 +5,29 @@
              xmlns:viewmodel ="clr-namespace:JandreMaui.ViewModel"
              x:DataType="viewmodel:MainViewModel"
              xmlns:model="clr-namespace:JandreMaui.Models"
-             BackgroundColor="#013328">
-    <Grid RowDefinitions=".1*, .1*, .1*,.65*,.1*" 
-          Margin="10,0,0,0">
-        <Grid Margin="0,0,25,0"
->
-            <Label Grid.Column="1"
-                Text="Current task"
-                   TextColor="White"
-                   Margin="30,0,0,0"
-                   FontSize="50">
-                
-            </Label>
-        </Grid>
-        <Grid Grid.Row="1"
-              ColumnDefinitions=".75*,.25*"
-              Margin="0,5,0,0">
-            <Entry Placeholder="Please enter a new Task" 
-               FontSize="18"
-               FontFamily="Arial"
-               Text="{Binding NewTask}"
-                   Margin="0,0,0,10">
-            </Entry>
-            <Button Text="Add" 
-                Grid.Column="1"
-                BackgroundColor="LightCyan"
-                TextColor="Black"
-                Command="{Binding AddCommand}"
-                Margin="0,0,10,20">
-            </Button>
-        </Grid>
-        <ScrollView Grid.Row="3"
-                    HorizontalScrollBarVisibility="Never"
-                    VerticalScrollBarVisibility="Never"
-                    Margin="0,32,10,0"
-                    >
-            <VerticalStackLayout Spacing="12">
-                <Border 
-                        Padding="12,4"
-                        BackgroundColor="#E3DCD2"
-                        Stroke="{StaticResource BorderColor}"
-                        HorizontalOptions="Fill"
-                        Margin="0,0,24,0"
-                        HeightRequest="48">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="6"></RoundRectangle>
-                    </Border.StrokeShape>
-                    <Grid
-                            HorizontalOptions="Fill"
-                            VerticalOptions="Center"
-                            ColumnDefinitions="Auto,*"
-                            ColumnSpacing="16" >
-
-                        <Label
-                                Text="Search for the task that is important"
-                            TextColor="#CC8B65"
+             BackgroundColor="#072A40">
+    <Grid RowDefinitions=".1*,.55*,.35*" >
+        <Grid>
+            <Label
+                                Text=" Still To Do "
+                            TextColor="#F9F7F0"
+                            FontSize="50"
+                TextDecorations="Underline"
+                            
                                 Grid.Column="1"
                                 VerticalOptions="Center"
                                 VerticalTextAlignment="Center"
                                 Style="{StaticResource MenuLabelStyle}"
-                            Margin="0,0,10,0">
-                        </Label>
+                            Margin="65,0,10,0">
+            </Label>
+        </Grid>
 
-                    </Grid>
+        <ScrollView Grid.Row="1"
+                    HorizontalScrollBarVisibility="Never"
+                    VerticalScrollBarVisibility="Never"
+                    Margin="15,32,10,0">
+            <VerticalStackLayout Spacing="12">
 
-                </Border>
                 <CollectionView   
                         HeightRequest="280"
                         SelectionMode="Single"
@@ -87,21 +45,21 @@
                                     WidthRequest="220"
                                     StrokeThickness="0"
                                     Padding="20"
-                                BackgroundColor="#CC8B65">
+                                BackgroundColor="#178CA4">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="24"/>
                                 </Border.StrokeShape>
                                 <Grid  
-                                        RowDefinitions="*,Auto,Auto"
+                                        RowDefinitions=".25*,.25*,.25*"
                                         RowSpacing="4">
                                     <Label
                                             Grid.Row="0"
                                             Text="{Binding Name}"
                                             Margin="0,4,0,0"/>
-                                    <Label Grid.Row="2"
-                                           Text="{Binding EndTime}">
+                                    <Label Grid.Row="1"
+                                           Text="{Binding Description}">
                                     </Label>
-                                    <Label Grid.Row="3"
+                                    <Label Grid.Row="2"
                                            Text="{Binding StartTime}"></Label>
 
                                 </Grid>
@@ -109,12 +67,50 @@
                             </Border>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
-                    
+
                 </CollectionView>
-                
+
             </VerticalStackLayout>
-            
+
         </ScrollView>
+        <Grid Grid.Row="2" RowDefinitions=".25*,.25*,.25*,.25*">
+            <Label
+                                Text=" Add New Task "
+                            TextColor="#F9F7F0"
+                            FontSize="40"
+                             TextDecorations="Underline"
+                            
+                                Grid.Column="1"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center"
+                            Margin="55,0,10,0">
+            </Label>
+            <Entry 
+                Grid.Row="1"
+                Placeholder="Enter a new Task" 
+                FontSize="18"
+                FontFamily="Arial"
+                Text="{Binding NewTask}"
+                   Margin="10,0,10,10">
+            </Entry>
+            <Entry 
+                Grid.Row="2"
+                Placeholder="Enter Task Description" 
+                FontSize="18"
+                FontFamily="Arial"
+                Text="{Binding TaskDescription}"
+                Margin="10,0,10,10">
+            </Entry>
+            <Button 
+                Grid.Row="3"
+                Text="Add" 
+                Grid.Column="1"
+                BackgroundColor="LightCyan"
+                TextColor="Black"
+                Command="{Binding AddCommand}"
+                Margin="10,0,10,20">
+            </Button>
+        </Grid>
 
     </Grid>
 

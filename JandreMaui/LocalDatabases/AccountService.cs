@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace JandreMaui.LocalDatabases
 {
     public class AccountService : IAccount
-    {//https://localhost:7270/api/AccountUser/1
+    {
         public async Task DeleteAccount(int accounts)
         {
 #if DEBUG

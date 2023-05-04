@@ -21,6 +21,8 @@ public static class MauiProgram
         builder.Services.AddTransient<ILocalDataBaseRepository, DatabaseService>();
 		builder.Services.AddTransient<IAccount , AccountService>();
 		builder.Services.AddTransient<AddAccount>();
+		builder.Services.AddTransient<EditeToDoViewModel>();
+		builder.Services.AddTransient <ToDoEditePage> ();
 
 		builder.Services.AddTransient<UserDetailedPage>();
 		builder.Services.AddTransient<DetailAccountViewModel>();

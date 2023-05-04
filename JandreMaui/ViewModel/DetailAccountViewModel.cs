@@ -50,12 +50,12 @@ namespace JandreMaui.ViewModel
 
 
         [RelayCommand]
-        async Task GoBack()
+        public async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
         }
         [RelayCommand]
-        private async Task Delete()
+        public async Task Delete()
         {
             try
             {

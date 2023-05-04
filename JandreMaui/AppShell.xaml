@@ -5,10 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:JandreMaui"
     FlyoutIcon="icons8-menu.svg"
-    BackgroundColor="#E3DCD2">
+    BackgroundColor="#178Ca4">
     
     <Shell.FlyoutHeader>
-        <Grid HeightRequest="50" BackgroundColor="Bisque">
+        <Grid HeightRequest="50" BackgroundColor="#178Ca4">
             <Label Text="Menu" FontSize="Large" Margin="125,5,0,0"></Label>
         </Grid> 
     </Shell.FlyoutHeader>
@@ -19,14 +19,6 @@
         Icon="icons8-menu.svg"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
-    </FlyoutItem>
-
-    <FlyoutItem Title="Weather">
-        <ShellContent 
-        Title="What is my weather"
-        Icon="icons8-menu.svg"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" ></ShellContent>
     </FlyoutItem>
     
     <FlyoutItem Title="Account">
