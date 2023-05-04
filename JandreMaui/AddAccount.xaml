@@ -2,12 +2,27 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="JandreMaui.AddAccount"
-             Title="AddAccount">
+             Title="AddAccount"
+             BackgroundColor="#072A40">
     <Grid RowDefinitions=".1*,.15*,.15*,.15*,.1*"
-          RowSpacing="5">
+          RowSpacing="10">
+        <Grid>
+            <Label
+                                Text=" Add User Accounts "
+                            TextColor="#F9F7F0"
+                            FontSize="30"
+                TextDecorations="Underline"
+                            
+                                Grid.Column="1"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center"
+                                Style="{StaticResource MenuLabelStyle}"
+                            Margin="55,0,0,0">
+            </Label>
+        </Grid>
         <Border Grid.Row="1"
                         Padding="12,4"
-                        BackgroundColor="#E3DCD2"
+                        BackgroundColor="#178CA4"
                         Stroke="{StaticResource BorderColor}"
                         HorizontalOptions="Fill"
                         Margin="10,0,10,0">
@@ -24,7 +39,7 @@
         </Border>
         <Border Grid.Row="2"
                         Padding="12,4"
-                        BackgroundColor="#E3DCD2"
+                        BackgroundColor="#178CA4"
                         Stroke="{StaticResource BorderColor}"
                         HorizontalOptions="Fill"
                         Margin="10,0,10,0">
@@ -41,7 +56,7 @@
         </Border>
         <Border Grid.Row="3"
                         Padding="12,4"
-                        BackgroundColor="#E3DCD2"
+                        BackgroundColor="#178CA4"
                         Stroke="{StaticResource BorderColor}"
                         HorizontalOptions="Fill"
                         Margin="10,0,10,0">
@@ -57,19 +72,21 @@
             </Entry>
         </Border>
         <Grid Grid.Row="4" ColumnDefinitions=".75*,.25*"
-              Margin="5"
+              Margin="10,40,10,10"
               ColumnSpacing="2">
             <Button Text="Add"
                 Command="{Binding AddCommand}"
                 Grid.Row="2"
-                BackgroundColor="Green"
+                BackgroundColor="LightCyan"
+                    TextColor="Black"
+                    FontSize="17"
                 Margin="1"
                 Grid.Column="0">
             </Button>
             <Button Text="Go back"
                 Command="{Binding GoBackCommand}"
                 Grid.Row="2"
-                BackgroundColor="Red"
+                BackgroundColor="#18B7BE"
                 Grid.Column="1"
                 Margin="1"></Button>
 
