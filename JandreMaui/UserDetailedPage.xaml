@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JandreMaui.UserDetailedPage"
+             Title="User Detail Page"
+             BackgroundColor="#013328"
+             xmlns:model="clr-namespace:JandreMaui.Models"
+             xmlns:viewmodel ="clr-namespace:JandreMaui.ViewModel"
+             x:DataType="viewmodel:DetailAccountViewModel">
+    
+    <Grid RowDefinitions=".1*,.5*,.3*,.1*" 
+          Margin="0,5,0,5"
+          RowSpacing="40">
+        <Border 
+                        Padding="12,4"
+                        BackgroundColor="#E3DCD2"
+                        Stroke="{StaticResource BorderColor}"
+                        HorizontalOptions="Fill"
+                        Margin="24,0,24,0"
+                        HeightRequest="50">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="6"></RoundRectangle>
+            </Border.StrokeShape>
+            <Grid
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Center"
+                            ColumnDefinitions="Auto,*"
+                            ColumnSpacing="16" >
+
+                <Label
+                                Text="{Binding Items.Name}"
+                            TextColor="#CC8B65"
+                                Grid.Column="1"
+                                Style="{StaticResource MenuLabelStyle}">
+                </Label>
+                <Entry Placeholder="Enter new name"
+                       Text="{Binding UserName}">
+                    
+                </Entry>
+
+            </Grid>
+
+        </Border>
+        <Grid Grid.Row="1">
+            <Border 
+                        Padding="12,4"
+                        BackgroundColor="#E3DCD2"
+                        Stroke="{StaticResource BorderColor}"
+                        HorizontalOptions="Fill"
+                        Margin="24,0,24,0"
+                        HeightRequest="400">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="6"></RoundRectangle>
+                </Border.StrokeShape>
+
+
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2"
+              RowDefinitions=".33*,.33*,.33*"
+              RowSpacing="0">
+            <Border     Padding="12,4"
+                        BackgroundColor="#E3DCD2"
+                        HorizontalOptions="Fill"
+                        Margin="15,0,15,0"
+                        HeightRequest="60">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="6"></RoundRectangle>
+                </Border.StrokeShape>
+                <Label
+                                Text="{Binding Items.Surname}"
+                            TextColor="#CC8B65"
+                                Grid.Column="1"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center">
+                </Label>
+                
+
+            </Border>
+            <Border     Grid.Row="1"
+                        Padding="12,4"
+                        BackgroundColor="#E3DCD2"
+                        HorizontalOptions="Fill"
+                        Margin="15,0,15,0"
+                        HeightRequest="60">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="6"></RoundRectangle>
+                </Border.StrokeShape>
+                <Label
+                                Text="{Binding Items.Email}"
+                                TextColor="#CC8B65"
+                                Grid.Column="1"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center">
+                </Label>
+
+
+
+            </Border>
+            <Border     Grid.Row="2"
+                        Padding="12,4"
+                        BackgroundColor="#E3DCD2"
+                        HorizontalOptions="Fill"
+                        Margin="15,0,15,0"
+                        HeightRequest="60">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="6"></RoundRectangle>
+                </Border.StrokeShape>
+                <Label
+                                Text="{Binding Items.IsActive}"
+                            TextColor="#CC8B65"
+                                Grid.Column="1"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center">
+                </Label>
+
+            </Border>
+
+        </Grid>
+        <Grid Grid.Row="3" ColumnDefinitions=".70*,.15*,.15*"
+              Margin="5"
+              ColumnSpacing="2">
+            <Button Text="Go back"
+                Command="{Binding GoBackCommand}"
+                BackgroundColor="Green"
+                Margin="1"
+                Grid.Column="0">
+            </Button>
+            <Button Text="Edit"
+                Command="{Binding EditCommand}"
+
+                BackgroundColor="Blue"
+                Margin="1"
+                Grid.Column="1">
+            </Button>
+            <Button Text="Delete"
+                Command="{Binding DeleteCommand}"
+                BackgroundColor="Red"
+                Grid.Column="2"
+                Margin="1"></Button>
+
+        </Grid>
+
+    </Grid>
+</ContentPage>

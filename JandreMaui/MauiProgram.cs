@@ -1,5 +1,4 @@
-﻿
-using JandreMaui.LocalDatabases;
+﻿using JandreMaui.LocalDatabases;
 using JandreMaui.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -19,10 +18,12 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-        builder.Services.AddSingleton<ILocalDataBaseRepository, DatabaseService>();
-		builder.Services.AddSingleton<IAccount , AccountService>();
+        builder.Services.AddTransient<ILocalDataBaseRepository, DatabaseService>();
+		builder.Services.AddTransient<IAccount , AccountService>();
 		builder.Services.AddTransient<AddAccount>();
-		builder.Services.AddTransient<UserDetailPage>();
+
+		builder.Services.AddTransient<UserDetailedPage>();
+		builder.Services.AddTransient<DetailAccountViewModel>();
 
 		builder.Services.AddTransient<AccountPage>();
 		builder.Services.AddTransient<AccountViewModel>();

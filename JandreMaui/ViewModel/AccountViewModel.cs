@@ -58,7 +58,7 @@ namespace JandreMaui.ViewModel
         {
             try
             {
-                await Task.Delay(1000);
+                await Task.Delay(500);
                 List<UserAccounts> users = await this.account.GetAllAccounts();
                 if (users != null)
                 {
@@ -120,7 +120,7 @@ namespace JandreMaui.ViewModel
         {
             try
             {
-                await Shell.Current.GoToAsync($"{nameof(UserDetailPage)}?reference={reference.Id}");
+                await Shell.Current.GoToAsync($"{nameof(UserDetailedPage)}?reference={reference.Id}");
             }
             catch (Exception exc)
             {

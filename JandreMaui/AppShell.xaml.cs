@@ -1,6 +1,4 @@
-﻿using JandreMaui.LocalDatabases;
-
-namespace JandreMaui;
+﻿namespace JandreMaui;
 
 public partial class AppShell : Shell
 {
@@ -10,6 +8,6 @@ public partial class AppShell : Shell
 
 		Routing.RegisterRoute(nameof(DetailsPage), typeof(DetailsPage));
 		Routing.RegisterRoute(nameof(AddAccount), typeof(AddAccount));
-		Routing.RegisterRoute(nameof(UserDetailPage), typeof(UserDetailPage));
+		Routing.RegisterRoute(nameof(UserDetailedPage), typeof(UserDetailedPage));
 	}
 }
