@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="JandreMaui.UserDetailedPage"
              Title="User Detail Page"
-             BackgroundColor="#013328"
+             BackgroundColor="#072A40"
              xmlns:model="clr-namespace:JandreMaui.Models"
              xmlns:viewmodel ="clr-namespace:JandreMaui.ViewModel"
              x:DataType="viewmodel:DetailAccountViewModel">
@@ -34,27 +34,28 @@
                                 FontSize="19">
                 </Label>
                 <Label Grid.Row="1"
-                                Text="{Binding Items.Surname, StringFormat='Description: {0}'}"
+                                Text="{Binding Items.Surname, StringFormat='Surname: {0}'}"
                                 TextColor="#F9F7F0"
                                 Grid.Column="1"
                                 Style="{StaticResource MenuLabelStyle}"
                                 FontSize="19">
                 </Label>
                 <Label Grid.Row="2"
-                                Text="{Binding Items.Email, StringFormat='Star time: {0}'}"
+                                Text="{Binding Items.Email, StringFormat='Email: {0}'}"
                                 TextColor="#F9F7F0"
                                 Grid.Column="1"
                                 Style="{StaticResource MenuLabelStyle}"
                                 FontSize="19">
                 </Label>
                 <Label Grid.Row="3"
-                                Text="{Binding Items.IsActive, StringFormat='End time: {0}'}"
+                                Text="{Binding Items.IsActive, StringFormat='IsActive: {0}'}"
                                 TextColor="#F9F7F0"
                                 Grid.Column="1"
                                 Style="{StaticResource MenuLabelStyle}"
                                 FontSize="19">
                 </Label>
-                <Button Text="Edite"
+                <Button Text="Edit"
+                        Command="{Binding TapCommand}"
                 Grid.Row="4"
                 BackgroundColor="LightCyan"
                 Margin="0,5,0,15"

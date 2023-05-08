@@ -1,17 +1,18 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using JandreMaui.Models;
 using JandreMaui.LocalDatabases;
+using JandreMaui.Models;
+using System.Collections.ObjectModel;
+using System.Text;
 
 namespace JandreMaui.ViewModel
 {
+
+
+
+
+
+
     public partial class MainViewModel : ObservableObject
     {
         ILocalDataBaseRepository _localDataBaseRepository;
@@ -50,7 +51,24 @@ namespace JandreMaui.ViewModel
         [ObservableProperty]
         private string newTask;
 
-        [ObservableProperty]
+
+
+        public string TaskDescription 
+        { 
+            get
+            {
+                return this.taskDescription;
+            }
+            set
+            {
+                if(this.taskDescription != value)
+                {
+                    this.taskDescription = value;
+                    this.OnPropertyChanged(nameof(TaskDescription));
+                }
+            }        
+        }
+
         private string taskDescription;
 
         [RelayCommand]

@@ -14,6 +14,11 @@ namespace JandreMaui.LocalDatabases
 {
     public class AccountService : IAccount
     {
+        /// <summary>
+        /// Used to remove a account given their Id
+        /// </summary>
+        /// <param name="accounts"></param>
+
         public async Task DeleteAccount(int accounts)
         {
 #if DEBUG
@@ -27,6 +32,11 @@ namespace JandreMaui.LocalDatabases
             UserAccounts userAccounts = JsonConvert.DeserializeObject<UserAccounts>(await response.Content.ReadAsStringAsync());
         }
 
+        /// <summary>
+        /// Used to get a single account base on the given Id
+        /// </summary>
+        /// <param name="accounts"></param>
+        /// <returns></returns>
         public async Task<UserAccounts> GetAccount(int accounts)
         {
 #if DEBUG
@@ -42,6 +52,10 @@ namespace JandreMaui.LocalDatabases
 
         }
 
+        /// <summary>
+        /// Used to get all the available accounts
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<UserAccounts>> GetAllAccounts()
         {
 
@@ -57,6 +71,11 @@ namespace JandreMaui.LocalDatabases
             return accounts;
         }
 
+        /// <summary>
+        /// Used to add an acvount
+        /// </summary>
+        /// <param name="accounts"></param>
+        /// <returns></returns>
         public async Task SaveAccount(UserAccounts accounts)
         {
 #if DEBUG
@@ -69,6 +88,12 @@ namespace JandreMaui.LocalDatabases
             HttpResponseMessage respones = await client.PostAsJsonAsync(results, accounts);
         }
 
+        /// <summary>
+        /// Used to update an account base on the Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="accounts"></param>
+        /// <returns></returns>
         public async Task UpdateAccount(int id, UserAccounts accounts)
         {
 #if DEBUG

@@ -24,5 +24,10 @@ public partial class MainPage : ContentPage
         base.OnAppearing();
 		Task.Delay(1000).ContinueWith(t => this.viewModel.ReadFromFile());
     }
+
+    private async void OnYoMama(object sender, EventArgs e)
+    {
+        await Shell.Current.Navigation.PushAsync(new NewPage1());
+    }
 }
 

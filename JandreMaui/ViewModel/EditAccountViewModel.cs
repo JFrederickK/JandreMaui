@@ -12,19 +12,15 @@ using System.Threading.Tasks;
 namespace JandreMaui.ViewModel
 {
     [QueryProperty(nameof(Reference), "reference")]
-
-    public partial class DetailAccountViewModel : ObservableObject
+    public partial class EditAccountViewModel : ObservableObject
     {
-        #region Constructor
-        IAccount userAccount;
-        public DetailAccountViewModel(IAccount account) 
-        {
-            items = new UserAccounts();
-            this.userAccount = account;
-        }
-        #endregion
 
-        #region Properties
+        IAccount userAccount;
+        public EditAccountViewModel(IAccount userAccountEdit)
+        { 
+            items = new UserAccounts();
+            this.userAccount = userAccountEdit;
+        }
         public int Reference
         {
             get { return this.reference; }
@@ -38,10 +34,9 @@ namespace JandreMaui.ViewModel
                 }
             }
         }
-        int reference;
-        #endregion
 
-        #region Instant Fields
+        int reference;
+
         [ObservableProperty]
         private UserAccounts items;
 
@@ -53,46 +48,34 @@ namespace JandreMaui.ViewModel
 
         [ObservableProperty]
         private string userEmail;
-        #endregion
 
-        #region Relay Command
         [RelayCommand]
         public async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
         }
+
         [RelayCommand]
-        public async Task Delete()
+        public async Task Edit()
         {
             try
             {
-                await this.userAccount.DeleteAccount(this.Reference);
+
+                await this.userAccount.UpdateAccount(this.Reference, new UserAccounts()
+                {
+                    Name = this.UserName != null ? this.UserName : Items.Name,
+                    Email = this.UserEmail != null ? this.UserEmail : Items.Email,
+                    Surname = this.UserSurname != null ? this.UserSurname : Items.Surname,
+                    Id = this.Reference,
+                    IsActive = true
+                });
                 await Shell.Current.GoToAsync("..");
-
             }
             catch (Exception exc)
             {
-                await Shell.Current.DisplayAlert("Could not delete", exc.Message, "Ok");
+                await Shell.Current.DisplayAlert("Could not update user", exc.Message, "Ok");
             }
-
         }
-        [RelayCommand]
-        public async Task Tap()
-        {
-            try
-            {
-                await Shell.Current.GoToAsync($"{nameof(EditAccountPage)}?reference={this.Reference}");
-            }
-            catch (Exception exc)
-            {
-                await Shell.Current.DisplayAlert("Error on the tap conmmand", exc.Message, "Ok");
-
-            }
-
-        }
-        #endregion
-
-        #region Instant Methods
         public async Task ReadFromFile()
         {
             try
@@ -101,21 +84,19 @@ namespace JandreMaui.ViewModel
                 var results = await this.userAccount.GetAccount(id);
                 this.Items = new UserAccounts()
                 {
-                Email = results.Email,
-                Id = results.Id,
-                IsActive = results.IsActive,
-                Name = results.Name,
-                Surname = results.Surname                           
+                    Email = results.Email,
+                    Id = results.Id,
+                    IsActive = results.IsActive,
+                    Name = results.Name,
+                    Surname = results.Surname
 
                 };
             }
             catch (Exception exc)
             {
-                await Shell.Current.DisplayAlert("Read File \nCould not find the user", exc.Message, "Ok");
+                await Shell.Current.DisplayAlert("Read File \nCould not find the task", exc.Message, "Ok");
             }
 
         }
-        #endregion
-
     }
 }

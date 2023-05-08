@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="JandreMaui.ToDoEditePage"
-             Title="Edite To Do"
-             xmlns:viewmodel ="clr-namespace:JandreMaui.ViewModel"
-             x:DataType="viewmodel:EditToDoViewModel"
+             x:Class="JandreMaui.EditAccountPage"
+             Title="Edit Account"
+             BackgroundColor="#072A40"
              xmlns:model="clr-namespace:JandreMaui.Models"
-             BackgroundColor="#072A40">
+             xmlns:viewmodel ="clr-namespace:JandreMaui.ViewModel"
+             x:DataType="viewmodel:EditAccountViewModel">
+    
     <Grid RowDefinitions=".1*,.1*,.2*,.1*"
           RowSpacing="10">
         <Border Grid.Row="0"
@@ -19,16 +20,16 @@
                 <RoundRectangle CornerRadius="6"></RoundRectangle>
             </Border.StrokeShape>
             <Entry
-                Placeholder="New name"
+                Placeholder="Name"
                 PlaceholderColor="#F9F7F0"
                FontSize="18"
                FontFamily="Arial"
-                Text="{Binding NewTaskName}"
+                Text="{Binding UserName}"
                    Margin="10,0,0,10">
             </Entry>
-            
+
         </Border>
-        
+
         <Border Grid.Row="1"
                         Padding="12,4"
                         BackgroundColor="#178CA4"
@@ -39,11 +40,30 @@
                 <RoundRectangle CornerRadius="6"></RoundRectangle>
             </Border.StrokeShape>
             <Entry
-                Placeholder="New Description"
+                Placeholder="Surname"
                 PlaceholderColor="#F9F7F0"
                FontSize="18"
                FontFamily="Arial"
-                Text="{Binding TaskDescription}"
+                Text="{Binding UserSurname}"
+                   Margin="10,0,0,10">
+            </Entry>
+
+        </Border>
+        <Border Grid.Row="2"
+                        Padding="12,4"
+                        BackgroundColor="#178CA4"
+                        Stroke="{StaticResource BorderColor}"
+                        HorizontalOptions="Fill"
+                        Margin="10,0,10,0">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="6"></RoundRectangle>
+            </Border.StrokeShape>
+            <Entry
+                Placeholder="Email"
+                PlaceholderColor="#F9F7F0"
+               FontSize="18"
+               FontFamily="Arial"
+                Text="{Binding UserEmail}"
                    Margin="10,0,0,10">
             </Entry>
 

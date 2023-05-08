@@ -20,9 +20,13 @@ public static class MauiProgram
 
         builder.Services.AddTransient<ILocalDataBaseRepository, DatabaseService>();
 		builder.Services.AddTransient<IAccount , AccountService>();
+
 		builder.Services.AddTransient<AddAccount>();
-		builder.Services.AddTransient<EditeToDoViewModel>();
+		builder.Services.AddTransient<EditToDoViewModel>();
 		builder.Services.AddTransient <ToDoEditePage> ();
+
+		builder.Services.AddTransient<EditAccountPage>();
+		builder.Services.AddTransient<EditAccountViewModel>();
 
 		builder.Services.AddTransient<UserDetailedPage>();
 		builder.Services.AddTransient<DetailAccountViewModel>();
@@ -35,6 +39,13 @@ public static class MauiProgram
 
         builder.Services.AddTransient<DetailViewModel>();
         builder.Services.AddTransient<DetailsPage>();
+
+
+        builder.Services.AddTransient<NewPage1>();
+
+
+
+        
 
 
 

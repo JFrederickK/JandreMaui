@@ -2,16 +2,11 @@
 using CommunityToolkit.Mvvm.Input;
 using JandreMaui.LocalDatabases;
 using JandreMaui.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JandreMaui.ViewModel
 {
     [QueryProperty(nameof(Reference), "reference")]
-    public partial class EditeToDoViewModel : ObservableObject
+    public partial class EditToDoViewModel : ObservableObject
     {
         public int Reference
         {
@@ -27,7 +22,7 @@ namespace JandreMaui.ViewModel
             }
         }
         ILocalDataBaseRepository _localDataBaseRepository;
-        public EditeToDoViewModel(ILocalDataBaseRepository localDataBaseRepository)
+        public EditToDoViewModel(ILocalDataBaseRepository localDataBaseRepository)
         {
 
             //Onthou om die service te inject.
@@ -53,7 +48,7 @@ namespace JandreMaui.ViewModel
         }
 
         [RelayCommand]
-        private async Task Edit()
+        public async Task Edit()
         {
             try
             {
@@ -66,7 +61,7 @@ namespace JandreMaui.ViewModel
                     Description = this.TaskDescription,
                     Name = this.NewTaskName,
                     Id = this.Items.Id,
-                    StartTime = this.Items.StartTime,
+                    StartTime = DateTime.Now,
                 };
                 await this._localDataBaseRepository.SaveItemAsync(newToDoClass);
                 await GoBack();

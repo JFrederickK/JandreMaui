@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JandreMaui.NewPage1"
+             Title="NewPage1"
+             xmlns:yoMamaNS="clr-namespace:JandreMaui">
+
+    <ContentPage.Resources>
+        <Style TargetType="{x:Type Label}" x:Key="Jannie">
+          
+            <Setter Property="FontSize" Value="20"></Setter>
+            
+            <Style.Triggers>
+                <Trigger TargetType="Label"  Property="Text" Value="11">
+                    <Setter Property="FontAttributes" Value="Bold"></Setter>
+                </Trigger>
+            </Style.Triggers>
+           
+         
+        </Style>
+    </ContentPage.Resources>
+    
+    <ContentPage.BindingContext>
+
+        <yoMamaNS:YoMamaViewModel></yoMamaNS:YoMamaViewModel>
+    </ContentPage.BindingContext>
+    
+    <VerticalStackLayout>
+        <Label 
+            x:Name="Label1"
+       
+            
+            Text="{Binding Number}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" >
+          
+        </Label>
+        <Label 
+            Text="{Binding VerticalOptions, Source={x:Reference Label1}}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <ContentView x:Name="Jannie1">
+            <VerticalStackLayout >
+              
+
+                
+
+                <Button Text="Click" Command="{Binding ButtonCommand}" ></Button>
+            </VerticalStackLayout>
+        </ContentView>
+
+    </VerticalStackLayout>
+ 
+</ContentPage>

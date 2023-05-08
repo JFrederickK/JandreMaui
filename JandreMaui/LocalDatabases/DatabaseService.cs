@@ -12,7 +12,14 @@ namespace JandreMaui.LocalDatabases
 {
     public class DatabaseService : ILocalDataBaseRepository
     {
+        /// <summary>
+        /// Connection for the SQLite
+        /// </summary>
         public SQLiteAsyncConnection _connection;
+
+        /// <summary>
+        /// Creats the SQlite connection and makes the table
+        /// </summary>
         public DatabaseService()
         {
             if (this.sqlConnection == null)
@@ -23,6 +30,10 @@ namespace JandreMaui.LocalDatabases
             this.sqlConnection.CreateTableAsync<ToDoClass>(CreateFlags.None);
         }
 
+        /// <summary>
+        /// Deletes the task given the <c>item</c>
+        /// </summary>
+        /// <param name="item"></param>
         public async Task DeleteItemAsync(ToDoClass item)
         {
             try
@@ -48,6 +59,11 @@ namespace JandreMaui.LocalDatabases
             }
         }
 
+        /// <summary>
+        /// Get a single item from the list of task base on the Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<ToDoClass> GetItemAsync(int id)
         {
             try
@@ -76,6 +92,10 @@ namespace JandreMaui.LocalDatabases
             }
         }
 
+        /// <summary>
+        /// Get all the task 
+        /// </summary>
+        /// <returns>List of Task <c>ToDoClass</c></returns>
         public async Task<List<ToDoClass>> GetItemsAsync()
         {
             try
@@ -94,10 +114,15 @@ namespace JandreMaui.LocalDatabases
             }
         }
 
+        /// <summary>
+        /// Saves a new task
+        /// </summary>
+        /// <param name="item"></param>
         public async Task SaveItemAsync(ToDoClass item)
         {
             try
             {
+                DateTime endTime = DateTime.Now;
                 if (this.sqlConnection == null)
                 {
                     throw new ArgumentNullException(nameof(this.sqlConnection));
@@ -114,7 +139,7 @@ namespace JandreMaui.LocalDatabases
                         Name = item.Name,
                         Description = item.Description,
                         StartTime = DateTime.Now,
-                        EndTime = item.EndTime,
+                        EndTime = endTime.AddDays(10),
 
                     }, typeof(ToDoClass));
 

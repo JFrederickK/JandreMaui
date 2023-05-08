@@ -110,6 +110,16 @@
                 Command="{Binding AddCommand}"
                 Margin="10,0,10,20">
             </Button>
+            <Button 
+                Grid.Row="3"
+                Text="Yo MAMA" 
+                Grid.Column="1"
+                BackgroundColor="LightCyan"
+                TextColor="Black"
+                Clicked="OnYoMama"
+                Margin="10,0,10,20">
+            </Button>
+
         </Grid>
 
     </Grid>

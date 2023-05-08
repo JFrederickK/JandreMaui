@@ -13,6 +13,7 @@ namespace JandreMaui.ViewModel
 {
     public partial class AccountViewModel : ObservableObject
     {
+        #region Constructor
         IAccount account;
         public AccountViewModel(IAccount userAccount)
         {
@@ -20,8 +21,9 @@ namespace JandreMaui.ViewModel
             this.ReadAccounts().ConfigureAwait(false);
             this.account = userAccount;
         }
+        #endregion
 
-        UserAccounts selectedToDo;
+        #region Properties
         public UserAccounts SelectedToDo
         {
             get
@@ -39,7 +41,10 @@ namespace JandreMaui.ViewModel
                 }
             }
         }
+        #endregion
 
+        #region Instant fields
+        UserAccounts selectedToDo;
 
         [ObservableProperty]
         private ObservableCollection<UserAccounts> useraccounts;
@@ -52,7 +57,9 @@ namespace JandreMaui.ViewModel
 
         [ObservableProperty]
         private string newUserEmail;
+        #endregion
 
+        #region Relay Commands
         [RelayCommand]
         public async Task ReadAccounts()
         {
@@ -129,5 +136,7 @@ namespace JandreMaui.ViewModel
             }
 
         }
+        #endregion
+
     }
 }

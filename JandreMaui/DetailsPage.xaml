@@ -55,7 +55,7 @@
                                 Style="{StaticResource MenuLabelStyle}"
                                 FontSize="19">
                 </Label>
-                <Button Text="Edite"
+                <Button Text="Edit"
                 Command="{Binding TapCommand}"
                 Grid.Row="4"
                 BackgroundColor="LightCyan"

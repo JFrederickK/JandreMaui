@@ -4,8 +4,8 @@ namespace JandreMaui;
 
 public partial class ToDoEditePage : ContentPage
 {
-	public EditeToDoViewModel viewModel;
-	public ToDoEditePage(EditeToDoViewModel editeViewModel)
+	public EditToDoViewModel viewModel;
+	public ToDoEditePage(EditToDoViewModel editeViewModel)
 	{
 		InitializeComponent();
         this.BindingContext = viewModel = editeViewModel;

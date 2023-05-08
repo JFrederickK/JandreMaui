@@ -14,6 +14,5 @@ public partial class UserDetailedPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        Task.Delay(1000).ContinueWith(t => this.DetailAccountViewModel.ReadFromFile());
     }
 }

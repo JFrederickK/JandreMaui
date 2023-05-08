@@ -9,6 +9,18 @@ namespace JandreMaui.ViewModel
     [QueryProperty(nameof(Reference), "reference")]
     public partial class DetailViewModel : ObservableObject
     {
+        #region Constructor
+        ILocalDataBaseRepository _localDataBaseRepository;
+        public DetailViewModel(ILocalDataBaseRepository localDataBaseRepository)
+        {
+
+            //Onthou om die service te inject.
+            Items = new ToDoClass();
+            this._localDataBaseRepository = localDataBaseRepository;
+        }
+        #endregion
+
+        #region Properties
         /// <summary>
         /// Old school method om die value the set wat van n ander page af kom
         /// </summary>
@@ -25,23 +37,19 @@ namespace JandreMaui.ViewModel
                 }
             }
         }
-        ILocalDataBaseRepository _localDataBaseRepository;
-        public DetailViewModel(ILocalDataBaseRepository localDataBaseRepository)
-        {
+        int reference;        
+        #endregion
 
-            //Onthou om die service te inject.
-            Items = new ToDoClass();
-            this._localDataBaseRepository = localDataBaseRepository;
-        }
 
+        #region Instant Fields
         [ObservableProperty]
         private ToDoClass items;
 
         [ObservableProperty]
         private string taskDescription;
+        #endregion
 
-        int reference;
-
+        #region Relay Command
         [RelayCommand]
         async Task GoBack()
         {
@@ -52,7 +60,7 @@ namespace JandreMaui.ViewModel
         private async Task Delete()
         {
             try
-                {
+            {
                 await this._localDataBaseRepository.DeleteItemAsync(this.Items);
                 await Shell.Current.GoToAsync("..");
             }
@@ -65,7 +73,8 @@ namespace JandreMaui.ViewModel
         [RelayCommand]
         private async Task Edit()
         {
-            try {
+            try
+            {
                 if (string.IsNullOrWhiteSpace(this.TaskDescription))
                 {
                     return;
@@ -78,30 +87,12 @@ namespace JandreMaui.ViewModel
                 };
                 await this._localDataBaseRepository.SaveItemAsync(newToDoClass);
             }
-            catch (Exception exc) {
+            catch (Exception exc)
+            {
                 await Shell.Current.DisplayAlert("Could not edit the task description", exc.Message, "Ok");
             }
         }
-        public async Task ReadFromFile()
-        {
-            try
-            {
-                int id = this.Reference;
-                var results = await this._localDataBaseRepository.GetItemAsync(id);
-                this.Items = new ToDoClass()
-                {
-                    Id = results.Id,
-                    Name = results.Name,
-                    Description = results.Description,
 
-                };
-            }
-            catch (Exception exc)
-            {
-                await Shell.Current.DisplayAlert("Read File \nCould not find the task", exc.Message, "Ok");
-            }
-
-        }
         [RelayCommand]
         private async Task Tap()
         {
@@ -116,6 +107,33 @@ namespace JandreMaui.ViewModel
             }
 
         }
+        #endregion
+
+        #region Instant Fields
+        public async Task ReadFromFile()
+        {
+            try
+            {
+                int id = this.Reference;
+                var results = await this._localDataBaseRepository.GetItemAsync(id);
+                this.Items = new ToDoClass()
+                {
+                    Id = results.Id,
+                    Name = results.Name,
+                    Description = results.Description,
+                    StartTime = results.StartTime,
+                    EndTime = results.EndTime,
+                };
+            }
+            catch (Exception exc)
+            {
+                await Shell.Current.DisplayAlert("Read File \nCould not find the task", exc.Message, "Ok");
+            }
+
+        }
+        #endregion
+
+
     }
 
 }
